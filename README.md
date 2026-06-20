@@ -7,13 +7,13 @@ This script provides a comprehensive reset of CrossOver trial period and bottle 
 **Just run this one command:**
 
 ```sh
-bash <(curl -fsSL "https://raw.githubusercontent.com/xVc323/crossover-trial/main/reset_crossover_fully.sh")
+bash <(curl -fsSL "https://raw.githubusercontent.com/lunagloaming/re-cross/main/reset_crossover_fully.sh")
 ```
 
 **Or download and run locally:**
 
 ```sh
-curl -fsSL "https://raw.githubusercontent.com/xVc323/crossover-trial/main/reset_crossover_fully.sh" -o reset_crossover_fully.sh
+curl -fsSL "https://raw.githubusercontent.com/lunagloaming/re-cross/main/reset_crossover_fully.sh" -o reset_crossover_fully.sh
 chmod +x reset_crossover_fully.sh
 ./reset_crossover_fully.sh
 ```
