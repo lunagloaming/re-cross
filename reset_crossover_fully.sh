@@ -24,6 +24,20 @@ log_message "IMPORTANT: Close CrossOver and ALL Windows apps before running!"
 
 ERRORS=0
 
+# 0. Kill any running CrossOver processes
+log_message "=== 6. Killing CrossOver Processes ==="
+pkill -f CrossOver 2>/dev/null && log_message "✓ CrossOver processes killed" || log_message "No CrossOver processes running"
+
+# Summary
+echo
+log_message "=== Reset Complete! ==="
+echo
+if [ $ERRORS -eq 0 ]; then
+    log_message "✅ All operations completed successfully!"
+else
+    error_message "⚠️  $ERRORS errors encountered. Check the output above."
+fi
+
 # 1. Nuclear preference reset
 log_message "=== 1. Resetting Preferences ==="
 PLIST_FILE="$HOME/Library/Preferences/com.codeweavers.CrossOver.plist"
@@ -119,20 +133,7 @@ log_message "=== 5. Cleaning Keychain ==="
 security delete-generic-password -s "crossover" 2>/dev/null && log_message "✓ CrossOver keychain entry removed" || log_message "No CrossOver keychain entries"
 security delete-generic-password -s "codeweavers" 2>/dev/null && log_message "✓ CodeWeavers keychain entry removed" || log_message "No CodeWeavers keychain entries"
 
-# 6. Kill any running CrossOver processes
-log_message "=== 6. Killing CrossOver Processes ==="
-pkill -f CrossOver 2>/dev/null && log_message "✓ CrossOver processes killed" || log_message "No CrossOver processes running"
-
-# Summary
-echo
-log_message "=== Reset Complete! ==="
-echo
-if [ $ERRORS -eq 0 ]; then
-    log_message "✅ All operations completed successfully!"
-else
-    error_message "⚠️  $ERRORS errors encountered. Check the output above."
-fi
-
+# Done
 echo
 log_message "NEXT STEPS:"
 log_message "1. Restart your Mac to clear any memory-cached trial information"
